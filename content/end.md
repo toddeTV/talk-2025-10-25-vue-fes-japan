@@ -47,6 +47,10 @@ layout: basic
                     <td>Zlig Source Code</td>
                     <td><MyLink to="https://github.com/toddeTV/zlig">https://github.com/toddeTV/zlig</MyLink></td>
                 </tr>
+                <tr>
+                    <td>Stage Flow Tools<br>(live pull & emoji interaction)</td>
+                    <td><MyLink to="https://github.com/toddeTV/stage-flow-tools">https://github.com/toddeTV/stage-flow-tools</MyLink></td>
+                </tr>
             </tbody>
         </table>
     </div>
