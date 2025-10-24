@@ -41,6 +41,13 @@
     "answer_options": [
       {
         "text": {
+          "de": "Vue3DtoGL",
+          "en": "Vue3DtoGL",
+          "ja": "Vue3DtoGL"
+        }
+      },
+      {
+        "text": {
           "de": "ThreeJS-Vue",
           "en": "ThreeJS-Vue",
           "ja": "ThreeJS-Vue"
@@ -98,6 +105,44 @@
       "de": "Warum ist der Schatten hier kaputt?",
       "en": "Why is the shadow broken here?",
       "ja": "なぜここの影は壊れているのですか？"
+    }
+  },
+  {
+    "answer_options": [
+      {
+        "text": {
+          "de": "Der Tag-Nacht-Zyklus mit einer bewegenden Sonne.",
+          "en": "The day-night cycle with a moving sun.",
+          "ja": "動く太陽のある昼夜サイクル。"
+        }
+      },
+      {
+        "text": {
+          "de": "Das Verwenden von Modelldateien.",
+          "en": "Using model files.",
+          "ja": "モデルファイルの使用。"
+        }
+      },
+      {
+        "text": {
+          "de": "Der Wasser-Effekt.",
+          "en": "The water effect.",
+          "ja": "水のエフェクト。"
+        }
+      },
+      {
+        "text": {
+          "de": "Der Nebel am Horizont, der von der Szenenmitte und nicht von der Kameraposition abhängt.",
+          "en": "The fog on the horizon, which depends on the scene's center and not the camera position.",
+          "ja": "地平線の霧。カメラの位置ではなく、シーンの中心に依存します。"
+        }
+      }
+    ],
+    "key": "biggest-challenge-in-zlig",
+    "question_text": {
+      "de": "Was war wahrscheinlich die größte Herausforderung bei diesem Spiel?",
+      "en": "What was likely the biggest challenge in this game?",
+      "ja": "このゲームで最も大きな挑戦は何でしたか？"
     }
   }
 ]
