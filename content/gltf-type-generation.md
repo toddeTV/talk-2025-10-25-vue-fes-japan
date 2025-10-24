@@ -14,17 +14,20 @@ layout: basic
 
 </v-clicks>
 
-<v-clicks class="mt-2">
+<v-clicks :depth="1" class="mt-2">
 
 - API Design in favor of **usability:** prioritize by usage e.g. `IslandScene.island.beach.rock001`
   - <mdi-code class="text-gray-400" /> Implement by packing the model in one (potentially very large) object
   - <ant-design-smile-filled class="text-green-400" /> Good usability bc user can use the scene graph that mirrors the glTF structure to navigate
   - <ant-design-frown-filled class="text-red-400" /> Larger bundle size due to the one (potentially very large) object
-- Generate types out of the runtime object by taking the names of all children
-- Store scene graph paths with the child indices linked to the child names
-<!-- - Use handlebars to generate files -->
 
 </v-clicks>
+
+<!--
+- Generate types out of the runtime object by taking the names of all children
+- Store scene graph paths with the child indices linked to the child names
+- Use handlebars to generate files
+-->
 
 <!--
 
