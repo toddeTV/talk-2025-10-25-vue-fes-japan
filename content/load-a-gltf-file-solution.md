@@ -19,13 +19,13 @@ layout: basic
 
 </div>
 
-<div class="absolute w-full top-24 bg-white" v-click>
+<div class="absolute w-200 top-24 bg-white" v-click>
 
 - <mdi-code class="mr-2"/> Loads at build time and can be triggered in dev
 
 </div>
 
-<div class="absolute w-full top-34 bg-white" v-click>
+<div class="absolute w-200 top-34 bg-white" v-click>
 
 - <ant-design-smile-filled class="text-green-400" /> Typings present
   - Code completion

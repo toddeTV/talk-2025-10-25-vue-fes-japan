@@ -57,6 +57,7 @@ jobs:
       - name: Build Project Artifacts
         env:
           VITE_ZLIG_DEMO_URL: ${{ vars.VITE_ZLIG_DEMO_URL }}
+          VITE_STAGE_FLOW_TOOLS_DEMO_URL: ${{ vars.VITE_STAGE_FLOW_TOOLS_DEMO_URL }}
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
