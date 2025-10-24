@@ -147,3 +147,5 @@ scene.value.add(dirLight)
 />
 
 ::right::
+
+<FloatingStageFlowToolsResultPage question-key="easy-3d-in-vue" v-click="[0,5]" />

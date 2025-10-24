@@ -12,6 +12,8 @@ layout: basic
 <!-- dummy only to force the click count on this slide manually -->
 <div v-click="4" />
 
+<FloatingStageFlowToolsResultPage question-key="introduction-usage" />
+
 <!--
 - Motivation: Why 3D in the Web?
 - with real world example
