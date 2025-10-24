@@ -57,6 +57,8 @@ jobs:
 
   dependence-release:
     name: Depend on Release
+    permissions:
+      contents: write
     needs:
       - check-tag-structure
       - check-main-branch
