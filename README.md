@@ -18,7 +18,8 @@ You can find pre deployed slides here, so that you can view them without the nee
 For this presentation to fully work you need the following external resources. You can also disable them in the `.env` if you like not to use these parts of the presentation, see comments in `.env` file.
 
 - A running copy of [zlig](https://github.com/toddeTV/zlig) as a Proof of Concept for a fully browser based 3D game.
-- A running copy of [stage-flow-tools](https://github.com/toddeTV/stage-flow-tools) for live questions and interactions for the audience.
+- A running copy of [stage-flow-tools](https://github.com/toddeTV/stage-flow-tools) for live questions and interactions for the audience.<br>
+  Populate Stage Flow Tools with the questions from `assets/stage-flow-tools/data/predefined-questions.json` to get the right polls for this talk. See the project documentation for help.
 
 #### project setup
 
