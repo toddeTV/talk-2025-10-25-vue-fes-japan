@@ -1,0 +1,42 @@
+name: Linting
+
+permissions:
+  contents: read
+
+on:
+  # push:
+  #   branches:
+  #     - dev
+  # pull_request:
+  #   branches:
+  #     - dev
+  workflow_dispatch: {} # allow triggering this workflow manually
+  workflow_call: {}
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the Codebase
+        uses: actions/checkout@v4
+
+      # - name: Enable Corepack
+      #   run: corepack enable
+
+      - name: Setup pnpm as package manager
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9.15.4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+
+      - name: 📦 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🧪 Test lint
+        run: pnpm lint

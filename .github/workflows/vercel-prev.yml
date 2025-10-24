@@ -1,0 +1,196 @@
+name: Vercel Preview Deployment
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+env:
+  VERCEL_TELEMETRY_DISABLED: 1
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  dependence_processed_variables:
+    name: Depend on Processed Variables
+    uses: ./.github/workflows/processed-variables.yml
+
+  dependence-lint:
+    name: Depend on Lint
+    uses: ./.github/workflows/lint.yml
+
+  vercel-deploy-preview:
+    name: Vercel Deploy Preview
+    needs:
+      - dependence-lint
+      - dependence_processed_variables
+    runs-on: ubuntu-latest
+    outputs:
+      deploymentUrlCommit: ${{ steps.deploy.outputs.deploymentUrlCommit }}
+      deploymentUrlPR: ${{ steps.deploy.outputs.deploymentUrlPR }}
+    steps:
+      - name: Checkout the Codebase
+        uses: actions/checkout@v4
+
+      # - name: Enable Corepack
+      #   run: corepack enable
+
+      - name: Setup pnpm as package manager
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9.15.4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+
+      - name: Install Vercel CLI
+        run: pnpm add --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        env:
+          VITE_ZLIG_DEMO_URL: ${{ vars.VITE_ZLIG_DEMO_URL }}
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        id: deploy
+        env:
+          ISSUE_NUMBER: ${{ needs.dependence_processed_variables.outputs.issueNumber }}
+        run: |
+          vercel deploy --prebuilt --token="${{ secrets.VERCEL_TOKEN }}" > deploy.log
+
+          # Extract the commit deployment URL from the Vercel CLI output
+          URL_COMMIT=$(cat deploy.log | grep -o 'https:\/\/[^ ]*.vercel.app' | head -n1)
+
+          # remove the first and the last character from the secret in order to unencrypt it
+          # (Otherwise GitHub will treat it as a secret and hide it, but we want to expose this secret later to the user)
+          URL_PR="pr-$ISSUE_NUMBER-${{ vars.VERCEL_PREVIEW_URL_SUFFIX }}"
+
+          # add the PR number as custom domain to the Vercel preview deployment
+          vercel alias set "$URL_COMMIT" "$URL_PR" --token="${{ secrets.VERCEL_TOKEN }}"
+
+          # output the GitHub action output for the next job
+          echo "deploymentUrlCommit=$URL_COMMIT" >> $GITHUB_OUTPUT
+          echo "deploymentUrlPR=https://$URL_PR" >> $GITHUB_OUTPUT
+
+      # - name: Vercel Action
+      #   uses: amondnet/vercel-action@v25
+      #   with:
+      #     vercel-token: ${{ secrets.VERCEL_TOKEN }} # Vercel token
+      #     # vercel-args: # Vercel args (optional)
+      #     github-comment: true # if you want to comment on pr and commit, set true, default: true (optional)
+      #     # github-token: # if you want to comment on pr and commit, set token (optional)
+      #     github-deployment: false # if you want to create github deployment, set true, default: false (optional)
+      #     # working-directory: # the working directory (optional)
+      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} # Vercel project id
+      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} # Vercel org id
+      #     # vercel-project-name: # The name of the project; if absent, the `vercel inspect` command is used to determine. (optional)
+      #     # vercel-version: # vercel-cli package version (optional)
+      #     # scope: # If you are work in team scope, you should set this value to your team id. (optional)
+      #     # zeit-token: # zeit.co token (optional)
+      #     # now-args: # (optional)
+      #     # now-project-id: # (optional)
+      #     # now-org-id: # (optional)
+      #     # alias-domains: # You can assign a domain to this deployment. Please note that this domain must have been configured in the project. You can use pull request number via `{{PR_NUMBER}}` and branch via `{{BRANCH}}` (optional)
+
+  add-comment-to-pr:
+    name: Add Comment to PR
+    needs:
+      - vercel-deploy-preview
+      - dependence_processed_variables
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Comment Preview URL to PR
+        uses: actions/github-script@v7
+        id: comment-deployment-url-script
+        env:
+          DEPLOYMENT_URL_COMMIT: ${{ needs.vercel-deploy-preview.outputs.deploymentUrlCommit }}
+          DEPLOYMENT_URL_PR: ${{ needs.vercel-deploy-preview.outputs.deploymentUrlPR }}
+          ISSUE_NUMBER: ${{ needs.dependence_processed_variables.outputs.issueNumber }}
+          LAST_COMMIT_SHA: ${{ needs.dependence_processed_variables.outputs.lastCommitSha }}
+        with:
+          script: |
+            // get issue number
+            const issueNumber = process.env.ISSUE_NUMBER
+
+            // get last commit sha
+            const lastCommitSha = process.env.LAST_COMMIT_SHA
+
+            // set output prefix
+            const outputPrefix = "👀 Preview deployed"
+
+            // get the date & time
+            const options = {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit"
+            }
+            const now = new Date()
+            const nowUTC = (now.toLocaleString("de-DE", {
+              ...options,
+              timeZone: "UTC"
+            }))
+              .replace(',', '')
+              .replace(/(\d{2})\.(\d{2})\.(\d{4})/, '$3-$2-$1') // reorganize date format to get `YYYY-MM-DD`
+            const nowBerlin = (now.toLocaleString("de-DE", {
+              ...options,
+              timeZone: "Europe/Berlin"
+            }))
+              .replace(',', '')
+              .replace(/(\d{2})\.(\d{2})\.(\d{4})/, '$3-$2-$1') // reorganize date format to get `YYYY-MM-DD`
+
+            // Create the output message
+            const output = `${outputPrefix}
+
+            (This comment is automatically generated by the workflow and will be updated with the latest deployment
+            information. See editing history for old preview URLs. Also, do not edit this comment.)
+
+            | Last Commit sha | ${lastCommitSha} |
+            |:---|:---|
+            | Preview Created | ${nowUTC} (UTC)<br>${nowBerlin} (Europe/Berlin) |
+            | URL PR | [${process.env.DEPLOYMENT_URL_PR}](${process.env.DEPLOYMENT_URL_PR}) |
+            | URL Commit | [${process.env.DEPLOYMENT_URL_COMMIT}](${process.env.DEPLOYMENT_URL_COMMIT}) |
+            `
+
+            // Retrieve existing bot comments for the PR
+            const { data: comments } = await github.rest.issues.listComments({
+                ...context.repo,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+            })
+
+            // Find the bot comment for this workflow
+            const botComment = comments.find(comment => {
+                return comment.user.type === 'Bot' && comment.body.includes(outputPrefix)
+            })
+
+            // If we have a comment, update it, otherwise create a new one
+            if (botComment) {
+                await github.rest.issues.updateComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    comment_id: botComment.id,
+                    body: output
+                })
+            } else {
+                await github.rest.issues.createComment({
+                    issue_number: issueNumber,
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    body: output
+                })
+            }

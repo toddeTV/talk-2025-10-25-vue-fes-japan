@@ -1,0 +1,41 @@
+name: Release Creation
+
+on:
+  workflow_call: {}
+
+jobs:
+  dependence_processed_variables:
+    name: Depend on Processed Variables
+    uses: ./.github/workflows/processed-variables.yml
+
+  dependence-lint:
+    name: Depend on Lint
+    uses: ./.github/workflows/lint.yml
+
+  create-release:
+    name: Create Release
+    needs:
+      - dependence-lint
+      - dependence_processed_variables
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Release
+        uses: actions/github-script@v7
+        env:
+          TAG_NAME: ${{ needs.dependence_processed_variables.outputs.tagName }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            try {
+              await github.rest.repos.createRelease({
+                draft: false,
+                generate_release_notes: true,
+                name: process.env.TAG_NAME,
+                owner: context.repo.owner,
+                prerelease: false,
+                repo: context.repo.repo,
+                tag_name: process.env.TAG_NAME,
+              });
+            } catch (error) {
+              core.setFailed(error.message);
+            }

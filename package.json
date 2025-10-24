@@ -1,0 +1,77 @@
+{
+  "name": "@todde.tv/talk-2025-10-25-vue-fes-japan",
+  "type": "module",
+  "version": "2025-10-25-rc.0",
+  "packageManager": "pnpm@9.15.4",
+  "description": "Slides for my talk titled `Playing with Vue in 3D` on 2025-10-25 at the Vue Fes Japan 2025 conference in Tokyo.",
+  "author": "Thorsten Seyschab <business@todde.tv> (https://todde.tv/)",
+  "contributors": [
+    {
+      "name": "Thorsten Seyschab",
+      "email": "business@todde.tv",
+      "url": "https://todde.tv/"
+    }
+  ],
+  "license": "SEE LICENSE IN LICENSE.md",
+  "homepage": "https://github.com/toddeTV/talk-2025-10-25-vue-fes-japan",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toddeTV/talk-2025-10-25-vue-fes-japan.git"
+  },
+  "bugs": {
+    "url": "https://github.com/toddeTV/talk-2025-10-25-vue-fes-japan/issues"
+  },
+  "engines": {
+    "node": "22",
+    "pnpm": "9",
+    "slidev": "^0.49.0"
+  },
+  "scripts": {
+    "build": "slidev build",
+    "serve": "pnpx serve dist",
+    "dev": "slidev --open",
+    "dev:network": "run-s \"dev --remote\"",
+    "export": "slidev export",
+    "lint": "eslint .",
+    "lint:fix": "run-s \"lint --fix\""
+  },
+  "slidev": {
+    "defaults": {
+      "fonts": {
+        "mono": "Fira Code",
+        "sans": "Avenir Next,Nunito Sans",
+        "local": "Avenir Next"
+      }
+    }
+  },
+  "dependencies": {
+    "@slidev/cli": "~51.0.2",
+    "vue": "~3.5.13"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "~4.1.0",
+    "@iconify-json/ant-design": "~1.2.5",
+    "@iconify-json/mdi": "~1.2.3",
+    "@iconify-json/simple-icons": "~1.2.22",
+    "@slidev/types": "~51.0.2",
+    "@tresjs/cientos": "~4.3.0",
+    "@tresjs/core": "~4.3.3",
+    "@tresjs/post-processing": "~2.3.1",
+    "@tsconfig/node20": "~20.1.4",
+    "@types/node": "~22.12.0",
+    "@types/three": "~0.175.0",
+    "@vue/eslint-config-typescript": "~14.3.0",
+    "codemirror-theme-vars": "~0.1.2",
+    "eslint": "~9.19.0",
+    "eslint-plugin-format": "~1.0.1",
+    "eslint-plugin-perfectionist": "~4.7.0",
+    "eslint-plugin-vue": "~9.32.0",
+    "npm-run-all2": "~7.0.2",
+    "postprocessing": "~6.36.7",
+    "prettier-plugin-slidev": "~1.0.5",
+    "prism-theme-vars": "~0.2.5",
+    "qrcode.vue": "~3.6.0",
+    "three": "~0.175.0",
+    "typescript": "~5.7.3"
+  }
+}
