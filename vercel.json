@@ -3,7 +3,7 @@
   "git": {
     "deploymentEnabled": false
   },
-  "installCommand": "pnpm install --frozen-lockfile",
+  "installCommand": "pnpm i --frozen-lockfile --prefer-offline",
   "outputDirectory": "dist",
   "rewrites": [
     {
