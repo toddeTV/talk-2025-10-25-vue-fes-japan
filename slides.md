@@ -128,15 +128,7 @@ src: content/gltf-type-generation.md
 ---
 
 ---
-src: content/gltf-type-generation-example.md
----
-
----
 src: content/load-a-gltf-file-solution.md
----
-
----
-src: content/agnostic-plugin-pipeline.md
 ---
 
 ---
