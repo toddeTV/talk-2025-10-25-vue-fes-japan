@@ -45,7 +45,7 @@ themeConfig:
   showPageProcessBar: true
   showTotalPageCount: false
   # e.g. when you have backup slides after the end slide and don't whant them to be added to the total page count
-  subtractFromTotalPageCount: 0
+  subtractFromTotalPageCount: 1
 title: Playing with Vue in 3D (talk on 2025-10-25 at the Vue Fes Japan 2025 conference in Tokyo.)
 titleTemplate: '%s'
 # slide transition: https://sli.dev/guide/animations.html#slide-transitions
@@ -145,4 +145,8 @@ src: content/gltf-type-toolkit.md
 
 ---
 src: content/end.md
+---
+
+---
+src: content/stage-flow-tools-login-placeholder.md
 ---
