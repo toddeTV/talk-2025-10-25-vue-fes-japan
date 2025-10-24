@@ -15,7 +15,7 @@ You can find pre deployed slides here, so that you can view them without the nee
 
 #### needed services
 
-For this presentation to fully work you need the following external resources. You can also disable them in the `.env` if you like not to use these parts of the presentation, see instructions below.
+For this presentation to fully work you need the following external resources. You can also disable them in the `.env` if you like not to use these parts of the presentation, see comments in `.env` file.
 
 - A running copy of [zlig](https://github.com/toddeTV/zlig) as a Proof of Concept for a fully browser based 3D game.
 
@@ -25,19 +25,16 @@ For this presentation to fully work you need the following external resources. Y
 2. open project in VSCode
 3. When working in VSCode, install the recommended extensions/ plugins listed in `.vscode/extensions.json` and enable them
 4. Duplicate `.env.example` as `.env` and set the environment variables as you like.
-5. Install dependencies: `pnpm i --frozen-lockfile`.
+5. Install dependencies: `pnpm i --frozen-lockfile --prefer-offline`.
 6. Start dev server with `pnpm dev` (only localhost) or `pnpm dev:network` (exposed to the network).
 7. Happy coding <3
 
 ### lint and prettier
 
-This project uses [antfu/eslint-config](https://github.com/antfu/eslint-config) for eslint most of the files.
-The following extend it:
+This project uses lint also for formatting. Read
+[why Prettier is not used for every file type](https://antfu.me/posts/why-not-prettier) by antfu.
 
-- [antfu/eslint-plugin-format](https://github.com/antfu/eslint-plugin-format) for using external formatters like
-  e.g. `prettier` for the file types that eslint cannot handle.
-- [azat-io/eslint-plugin-perfectionist](https://github.com/azat-io/eslint-plugin-perfectionist) for
-  sorting object keys, imports, etc. - with auto-fix.
+This project uses [antfu/eslint-config](https://github.com/antfu/eslint-config) for eslint most of the files.
 
 Keep in mind that the plugin names are renamed, see
 [Plugins Rename](https://github.com/antfu/eslint-config?tab=readme-ov-file#plugins-renaming), e.g.:
@@ -48,8 +45,6 @@ Keep in mind that the plugin names are renamed, see
 type foo = { bar: 2 }
 ```
 
-[Why I don't use Prettier for every file type](https://antfu.me/posts/why-not-prettier)
-
 ### Design
 
 #### used icon collections
@@ -57,49 +52,57 @@ type foo = { bar: 2 }
 This project uses the following icon collections in descending order, try sticking to them and use from top to bottom.
 Tipp: Favorite them and use the search over all item collections at once: https://icon-sets.iconify.design/?list=favorite
 
-| full name               | shorthand      | license                                                         | note |
-| ----------------------- | -------------- | --------------------------------------------------------------- | ---- |
-| `Material Design Icons` | `mdi`          | Apache 2.0 (commercial use is allowed, no attribution required) |      |
-| `Ant Design Icons`      | `ant-design`   | MIT                                                             |      |
-| `Simple Icons`          | `simple-icons` | CC0 1.0                                                         |      |
-
-### Docs and helper websites
-
-- [Slidev](https://github.com/slidevjs/slidev)
-  - [documentation](https://sli.dev/)
-  - [themes](https://github.com/slidevjs/themes)
+| full name               | shorthand      | license                                                         | note                        |
+| ----------------------- | -------------- | --------------------------------------------------------------- | --------------------------- |
+| `Material Design Icons` | `mdi`          | Apache 2.0 (commercial use is allowed, no attribution required) |                             |
+| `Simple Icons`          | `simple-icons` | CC0 1.0                                                         | Monocolor logos, many.      |
+| `SVG Logos`             | `logos`        | CC0 1.0                                                         | Colored logos, not so many. |
+| `Ant Design Icons`      | `ant-design`   | MIT                                                             |                             |
 
 ## prod
 
 Will use the build command out of `/package.json`.<br>
 Depends on where you like to deploy.
 
-## Attribution/ Contribution
+## Contribution & Attribution
 
-Project founder & head of project:
+### Project Contributors
 
-- [Thorsten Seyschab](https://todde.tv)
+<a href="https://github.com/toddeTV/talk-2025-10-25-vue-fes-japan/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=toddeTV/talk-2025-10-25-vue-fes-japan" />
+</a>
 
-Honorable mentions to people that helped this project:
+### Current Core Team Members
+
+- [Thorsten Seyschab](https://todde.tv) as Project Founder & Lead.
+
+### Acknowledgments
+
+**Special Thanks:**<br>
+_(People who provided valuable help on specific topics or issues)_
 
 - \[currently none\]
 
-Respectable mentions to projects that helped this project:
+**Helpful Projects:**<br>
+_(Projects that provided valuable inspiration or resources.)_
 
 - My own talk titled `Playing with 3D on the Web & Beyond` that was held on 2025-04-08 at the [Dev Day](https://www.devday.de/) 2025 conference in Dresden was the foundation of this project. See the project code here: [https://github.com/toddeTV/talk-2025-04-08-dev-day-conference](https://github.com/toddeTV/talk-2025-04-08-dev-day-conference)
 
-Used programs/ softwares, services and dependencies - besides the ones in `./package.json`:
+**Additional Tools:**<br>
+_(excluding those listed in `./package.json`)_
 
 - [Slidev](https://github.com/slidevjs/slidev) used for creating the slides of the talk.
 - [Figma](https://www.figma.com/) used for SVG asset creations.
-- [excalidraw](https://excalidraw.com/) was used for sketching & drawing images.
 
-Used assets/ materials including images and 3D models:
+**Assets & Materials Used:**<br>
+_(including images & 3D models; mostly only those requiring attribution)_
 
-- Game Project `zlig` hosted on [https://zlig.net/](https://zlig.net/) with source code on [https://github.com/toddeTV/zlig](https://github.com/toddeTV/zlig). Included materials in `zlig` are listed separately there as they are not part of this presentation project.
-- Portrait from `Thorsten Seyschab` by [Franziska Kestel](https://franziskakestel.de/).
-- Logo for `ThreeJS` from [https://discourse.threejs.org/t/three-js-svg-logo/21835](https://discourse.threejs.org/t/three-js-svg-logo/21835).
-- Logo for `WebGL` from [https://en.m.wikipedia.org/wiki/File:WebGL_Logo.svg](https://en.m.wikipedia.org/wiki/File:WebGL_Logo.svg).
+- Image `thorsten-seyschab.jpg` by [Franziska Kestel](https://franziskakestel.de/).
+- Image `WebGL.png` from [https://en.m.wikipedia.org/wiki/File:WebGL_Logo.svg](https://en.m.wikipedia.org/wiki/File:WebGL_Logo.svg), date 2025-06-04.
+- Image `ThreeJS.png` from [https://discourse.threejs.org/t/three-js-svg-logo/21835](https://discourse.threejs.org/t/three-js-svg-logo/21835), date 2025-06-04.
+- Image `supported-build-tools-from-unplugin.unjs.io.png` from [https://unplugin.unjs.io/](https://unplugin.unjs.io/), date 2025-06-04.
+- Image `gltf-type-toolkit-github-screenshot.png` from [https://github.com/toddeTV/gltf-type-toolkit](https://github.com/toddeTV/gltf-type-toolkit), date 2025-01-29.
+- Demo of Website [https://zlig.net](https://zlig.net).
 - 3D asset(s), Internally identified with ID `18`:
   - Name: `Train Kit`
   - Cost: free

@@ -2,7 +2,7 @@
 layout: basic
 ---
 
-# Game, Code & Licenses
+# End - Resources & Licenses
 
 <!-- <div class="absolute right-15 top-18 p-1 pr-2 text-xs flex gap-2" v-mark="{ at: 0, color: '#26ab7a', type: 'box' }">
     <mdi-heart class="text-red-400 animate-pulse" />
@@ -18,14 +18,14 @@ layout: basic
         class="p-4 flex flex-col items-center"
         v-mark="{ at: 0, color: '#26ab7a', type: 'box' }"
     >
-        <QRCode content="https://github.com/toddeTV/talk-2025-09-23-prag-vue" :size="128" class="mb-6" />
+        <QRCode content="https://github.com/toddeTV/talk-2025-10-25-vue-fes-japan" :size="128" class="mb-6" />
         <div class="flex flex-col gap-2">
             <div class="whitespace-nowrap">
                 This Presentation Slides
             </div>
             <div class="w-full text-sm">
                 <mdi-github class="baseColor mx-2" />
-                <MyLink to="https://github.com/toddeTV/talk-2025-09-23-prag-vue">https://github.com/toddeTV/talk-2025-09-23-prag-vue</MyLink>
+                <MyLink to="https://github.com/toddeTV/talk-2025-10-25-vue-fes-japan">https://github.com/toddeTV/talk-2025-10-25-vue-fes-japan</MyLink>
             </div>
         </div>
     </div>
