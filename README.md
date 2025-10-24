@@ -93,7 +93,6 @@ _(excluding those listed in `./package.json`)_
 
 - [Slidev](https://github.com/slidevjs/slidev) used for creating the slides of the talk.
 - [Figma](https://www.figma.com/) used for SVG asset creations.
-- [excalidraw](https://excalidraw.com/) was used for sketching & drawing images.
 
 **Assets & Materials Used:**<br>
 _(including images & 3D models; mostly only those requiring attribution)_
