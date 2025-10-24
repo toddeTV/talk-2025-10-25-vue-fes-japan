@@ -11,7 +11,7 @@ const { url: stageFlowToolsDemoUrl } = useStageFlowTools()
   >
     <iframe
       height="100%"
-      :src="stageFlowToolsDemoUrl"
+      :src="`${stageFlowToolsDemoUrl}/emojis?scale=0.4&transparency=0.7`"
       width="100%"
     />
   </div>

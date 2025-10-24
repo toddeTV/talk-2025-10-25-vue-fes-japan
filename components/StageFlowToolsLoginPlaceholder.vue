@@ -12,7 +12,7 @@ const { url: stageFlowToolsDemoUrl } = useStageFlowTools()
     <iframe
       v-if="stageFlowToolsDemoUrl"
       height="500px"
-      src="https://stage-flow-tools.todde.tv/admin"
+      :src="`${stageFlowToolsDemoUrl}/admin`"
       width="100%"
     />
     <div v-else>

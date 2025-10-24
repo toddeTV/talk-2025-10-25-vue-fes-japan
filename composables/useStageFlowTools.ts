@@ -6,7 +6,7 @@ export function useStageFlowTools() {
     if (!url) {
       return undefined
     }
-    return `${url}/emojis?scale=0.4&transparency=0.7`
+    return url
   })
 
   return {
