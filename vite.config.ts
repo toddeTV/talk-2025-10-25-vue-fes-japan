@@ -2,6 +2,7 @@ import type { UserConfig } from 'vite'
 import { cwd } from 'node:process'
 import { templateCompilerOptions } from '@tresjs/core'
 import { defineConfig, loadEnv } from 'vite'
+import svgLoader from 'vite-svg-loader'
 
 export default defineConfig(({ mode }): UserConfig => {
   const env = loadEnv(mode, cwd(), '')
@@ -22,6 +23,7 @@ export default defineConfig(({ mode }): UserConfig => {
 
   return {
     plugins: [
+      svgLoader(),
     ],
     server,
     slidev: {

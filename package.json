@@ -73,6 +73,7 @@
     "prism-theme-vars": "~0.2.5",
     "qrcode.vue": "~3.6.0",
     "three": "~0.175.0",
-    "typescript": "~5.7.3"
+    "typescript": "~5.7.3",
+    "vite-svg-loader": "~5.1.0"
   }
 }
