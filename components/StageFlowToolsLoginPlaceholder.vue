@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useStageFlowTools } from '../composables/useStageFlowTools'
 
-const { url: stageFlowToolsDemoUrl } = useStageFlowTools()
+const { iframeUrl: stageFlowToolsDemoUrl } = useStageFlowTools()
 </script>
 
 <template>

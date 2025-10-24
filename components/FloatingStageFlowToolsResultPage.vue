@@ -1,8 +1,13 @@
 <script setup lang="ts">
+import { onSlideEnter, onSlideLeave } from '@slidev/client'
 import { ref } from 'vue'
 import { useStageFlowTools } from '../composables/useStageFlowTools'
 
-const { url: stageFlowToolsDemoUrl } = useStageFlowTools()
+const props = defineProps<{
+  questionId?: string
+}>()
+
+const { apiUrl, iframeUrl: stageFlowToolsDemoUrl } = useStageFlowTools()
 
 const isMaximized = ref(false)
 
@@ -10,7 +15,25 @@ function toggleSize() {
   isMaximized.value = !isMaximized.value
 }
 
-const iframeUrl = `${stageFlowToolsDemoUrl.value}/results?core=&padding=100&scale=0.75&hideResults`
+const iframeSrc = `${stageFlowToolsDemoUrl.value}/results?core&padding=50&scale=0.75`
+
+onSlideEnter(() => {
+  if (props.questionId) {
+    fetch(`${apiUrl}/api/questions/publish`, {
+      body: JSON.stringify({ questionId: props.questionId }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    })
+  }
+})
+
+onSlideLeave(() => {
+  fetch(`${apiUrl}/api/questions/unpublish-active`, {
+    method: 'POST',
+  })
+})
 </script>
 
 <template>
@@ -37,7 +60,7 @@ const iframeUrl = `${stageFlowToolsDemoUrl.value}/results?core=&padding=100&scal
           class="preview-iframe"
           :class="{ 'scaled-down': !isMaximized }"
           frameborder="0"
-          :src="iframeUrl"
+          :src="iframeSrc"
         />
       </div>
     </div>
