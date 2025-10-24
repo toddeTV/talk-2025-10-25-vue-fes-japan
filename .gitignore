@@ -1,0 +1,23 @@
+# general
+.DS_Store
+coverage
+*.local
+.vite-inspect
+.remote-assets
+components.d.ts
+.env
+
+# Logs
+logs
+*.log
+pnpm-debug.log*
+lerna-debug.log*
+
+# dependencies
+node_modules
+
+# output
+*.tsbuildinfo
+dist
+dist-ssr
+.output
