@@ -32,3 +32,8 @@ layout: two-cols
 ````
 
 ::right::
+
+<!-- dummy only to force the click count on this slide manually -->
+<div v-click="1" />
+
+<FloatingStageFlowToolsResultPage question-key="why-shadow-broken" v-click="[0,1]" />
