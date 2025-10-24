@@ -1,0 +1,103 @@
+[
+  {
+    "answer_options": [
+      {
+        "text": {
+          "de": "Ja, als Anwender und als Entwickler.",
+          "en": "Yes, as both a user and a developer.",
+          "ja": "はい、ユーザーとしても開発者としても使用しました。"
+        }
+      },
+      {
+        "text": {
+          "de": "Ja, ausschließlich als Anwender.",
+          "en": "Yes, exclusively as a user.",
+          "ja": "はい、ユーザーとしてのみ使用しました。"
+        }
+      },
+      {
+        "text": {
+          "de": "Ja, ausschließlich als Entwickler.",
+          "en": "Yes, exclusively as a developer.",
+          "ja": "はい、開発者としてのみ使用しました。"
+        }
+      },
+      {
+        "text": {
+          "de": "Ich habe noch nie 3D im Web genutzt.",
+          "en": "I have never used 3D on the web.",
+          "ja": "ウェブで3Dを使用したことはありません。"
+        }
+      }
+    ],
+    "key": "introduction-usage",
+    "question_text": {
+      "de": "Wer hat schon einmal 3D im Web genutzt?",
+      "en": "Who has used 3D on the web before?",
+      "ja": "ウェブで3Dを使用したことがありますか？"
+    }
+  },
+  {
+    "answer_options": [
+      {
+        "text": {
+          "de": "ThreeJS-Vue",
+          "en": "ThreeJS-Vue",
+          "ja": "ThreeJS-Vue"
+        }
+      },
+      {
+        "text": {
+          "de": "BabylonVue",
+          "en": "BabylonVue",
+          "ja": "BabylonVue"
+        }
+      },
+      {
+        "emoji": "⭐",
+        "text": {
+          "de": "TresJS",
+          "en": "TresJS",
+          "ja": "TresJS"
+        }
+      }
+    ],
+    "key": "easy-3d-in-vue",
+    "question_text": {
+      "de": "Welches Framework ist am besten geeignet, um 3D-Szenen in Vue 3 zu erstellen?",
+      "en": "Which framework is best for creating 3D scenes in Vue 3?",
+      "ja": "Vue 3で3Dシーンを作成するのに最適なフレームワークはどれですか？"
+    }
+  },
+  {
+    "answer_options": [
+      {
+        "text": {
+          "de": "Weil es ein Bug ist.",
+          "en": "Because it's a bug.",
+          "ja": "バグだからです。"
+        }
+      },
+      {
+        "text": {
+          "de": "Weil der Schatten nur in unserer Kamera gerendert wird und die Kamera ihn daher abschneidet.",
+          "en": "Because the shadow is only rendered in our camera, and the camera clips it away.",
+          "ja": "影は私たちのカメラでのみレンダリングされ、カメラがそれをクリップしてしまうからです。"
+        }
+      },
+      {
+        "text": {
+          "de": "Weil unser Licht nicht weit genug scheint.",
+          "en": "Because our light doesn't shine far enough.",
+          "ja": "私たちの光が十分に遠くまで届かないからです。"
+        }
+      }
+    ],
+    "key": "why-shadow-broken",
+    "question_text": {
+      "de": "Warum ist der Schatten hier kaputt?",
+      "en": "Why is the shadow broken here?",
+      "ja": "なぜここの影は壊れているのですか？"
+    }
+  }
+]
