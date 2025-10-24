@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import { useStageFlowTools } from '../composables/useStageFlowTools'
 
 const props = defineProps<{
-  questionId?: string
+  questionKey?: string
 }>()
 
 const { apiUrl, iframeUrl: stageFlowToolsDemoUrl } = useStageFlowTools()
@@ -15,12 +15,12 @@ function toggleSize() {
   isMaximized.value = !isMaximized.value
 }
 
-const iframeSrc = `${stageFlowToolsDemoUrl.value}/results?core&padding=50&scale=0.75`
+const iframeSrc = `${stageFlowToolsDemoUrl.value}/results?core&visibility=show-all&padding=50&scale=0.75`
 
 onSlideEnter(() => {
-  if (props.questionId) {
+  if (props.questionKey) {
     fetch(`${apiUrl}/api/questions/publish`, {
-      body: JSON.stringify({ questionId: props.questionId }),
+      body: JSON.stringify({ key: props.questionKey }),
       headers: {
         'Content-Type': 'application/json',
       },

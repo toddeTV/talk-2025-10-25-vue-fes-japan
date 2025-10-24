@@ -211,7 +211,7 @@ const pixelStrength = ref(10)
         <GLTFModel
           ref="modelRef"
           :cast-shadow="isStepMin(11) && showShadow"
-          path="/assets/models/train-tram-round.glb"
+          path="/assets/models-3d/train-tram-round.glb"
           :receive-shadow="isStepMin(11) && showShadow"
           :scale="1.5"
           @click="modelClicked"

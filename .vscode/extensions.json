@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "antfu.iconify",
     "antfu.slidev",
     "antfu.unocss",
     "dbaeumer.vscode-eslint",
