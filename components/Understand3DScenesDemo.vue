@@ -148,7 +148,7 @@ const pixelStrength = ref(10)
   <WindowWrapper
     background="#E1F4FF"
     :class="{ 'opacity-0 hidden h-0! w-0!': isStep(5, 5) }"
-    max-height
+    height="body"
   >
     <!-- 6: canvas -->
     <div v-if="isStepMax(5)" class="h-full h-full bg-[#FFFFFF]" />

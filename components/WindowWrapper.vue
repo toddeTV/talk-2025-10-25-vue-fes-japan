@@ -1,17 +1,28 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const props = withDefaults(defineProps<{
   background?: string
-  maxHeight?: boolean
+  height?: 'full' | 'body'
 }>(), {
   background: '#ffffff',
-  maxHeight: false,
+})
+
+const style = computed(() => {
+  if (props.height === 'body') {
+    return 'height: 470px !important; max-height: 470px !important; min-height: 470px !important;'
+  }
+  if (props.height === 'full') {
+    return 'height: 525px !important; max-height: 525px !important; min-height: 525px !important;'
+  }
+  return ''
 })
 </script>
 
 <template>
   <div
     class="browser-window"
-    :class="{ '!h-120': props.maxHeight }"
+    :style="style"
   >
     <div class="browser-header">
       <div class="browser-buttons">

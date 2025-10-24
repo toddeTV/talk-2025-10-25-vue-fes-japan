@@ -6,7 +6,7 @@ layout: two-cols
 
 ::left::
 
-<WindowWrapper max-height background="#F5F5F5">
+<WindowWrapper height="body" background="#F5F5F5">
 ````md magic-move {lines: true}
 ```json {*}
 {
