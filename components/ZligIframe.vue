@@ -10,11 +10,11 @@ const props = withDefaults(defineProps<{
 })
 
 const zligDemoUrl = computed<string | undefined>(() => {
-  const zligDemoUrl = import.meta.env.VITE_ZLIG_DEMO_URL
-  if (!zligDemoUrl) {
+  const url = import.meta.env.VITE_ZLIG_DEMO_URL
+  if (!url) {
     return undefined
   }
-  return zligDemoUrl
+  return url
 })
 </script>
 
@@ -26,7 +26,7 @@ const zligDemoUrl = computed<string | undefined>(() => {
     width="100%"
   />
   <div v-else>
-    zlig demo base url is not set. Please set it in .env file.
+    Environment variable `VITE_ZLIG_DEMO_URL` is not set. Please set it to use this feature.
   </div>
 </template>
 
