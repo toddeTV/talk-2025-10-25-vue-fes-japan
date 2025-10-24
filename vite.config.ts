@@ -1,9 +1,10 @@
 import type { UserConfig } from 'vite'
+import { cwd } from 'node:process'
 import { templateCompilerOptions } from '@tresjs/core'
 import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ mode }): UserConfig => {
-  const env = loadEnv(mode, process.cwd(), '')
+  const env = loadEnv(mode, cwd(), '')
 
   const proxyTarget = env.VITE_STAGE_FLOW_TOOLS_DEMO_URL
 
