@@ -10,7 +10,7 @@ const props = withDefaults(defineProps<{
 })
 
 const zligDemoUrl = computed<string | undefined>(() => {
-  const url = import.meta.env.VITE_ZLIG_DEMO_URL
+  const url = (import.meta as any).env.VITE_ZLIG_DEMO_URL as string | undefined
   if (!url) {
     return undefined
   }
