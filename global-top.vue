@@ -15,6 +15,7 @@ watchEffect(() => {
 </script>
 
 <template>
+  <!-- Understand 3D Scenes Headlines -->
   <div
     v-if="pagesToShowUnderstand3DScenesDemo.includes(page) && page !== 4"
     class="absolute top-24 left-14 w-110"
@@ -22,6 +23,7 @@ watchEffect(() => {
     <Understand3DScenesHeadlines :step="page - 4" />
   </div>
 
+  <!-- Understand 3D Scenes Demo -->
   <div
     class="absolute top-24 left-132 w-110"
     :class="{ 'opacity-0 hidden h-0! w-0!': !pagesToShowUnderstand3DScenesDemo.includes(page) }"
