@@ -19,7 +19,7 @@ import { GLTFModel } from '@tresjs/cientos'
   <TresCanvas clear-color="E1F4FF">
     <!-- [...] -->
     <Suspense>
-      <GLTFModel path="keyboard.gltf"
+      <GLTFModel path="train.gltf"
         cast-shadow receive-shadow />
     </Suspense>
     <!-- [...] -->

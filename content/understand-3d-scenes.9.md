@@ -22,7 +22,7 @@ function modelClicked(e) {
   <TresCanvas clear-color="E1F4FF">
     <!-- [...] -->
     <Suspense>
-      <GLTFModel path="keyboard.gltf"
+      <GLTFModel path="train.gltf"
         cast-shadow receive-shadow
         @click="clicked" />
     </Suspense>
