@@ -35,5 +35,5 @@ export default defineConfig(({ mode }): UserConfig => {
         ...templateCompilerOptions,
       },
     },
-  }
+  } as UserConfig
 })
