@@ -31,6 +31,10 @@ For this presentation to fully work you need the following external resources. Y
 6. Start dev server with `pnpm dev` (only localhost) or `pnpm dev:network` (exposed to the network).
 7. Happy coding <3
 
+#### ⚠️ dev serve for live presentation
+
+Given that running `pnpm dev` is quite slow for the live presentation itself, I usually run a `pnpm build` beforehand and then use `pnpm serve` for the talk. However, this is not possible for this specific presentation due to the Vite Proxy configuration (see the `vite.config.ts` file). Consequently, we will unfortunately have to run `pnpm dev` even for the presentation.
+
 ### lint and prettier
 
 This project uses lint also for formatting. Read
