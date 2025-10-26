@@ -1,7 +1,7 @@
 {
   "name": "@todde.tv/talk-2025-10-25-vue-fes-japan",
   "type": "module",
-  "version": "2025-10-25-rc.0",
+  "version": "2025-10-25",
   "packageManager": "pnpm@9.15.4",
   "description": "Slides for my talk titled `Playing with Vue in 3D` on 2025-10-25 at the Vue Fes Japan 2025 conference in Tokyo.",
   "author": "Thorsten Seyschab <business@todde.tv> (https://todde.tv/)",
