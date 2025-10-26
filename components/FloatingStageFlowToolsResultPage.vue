@@ -7,7 +7,7 @@ const props = defineProps<{
   questionKey?: string
 }>()
 
-const { apiUrl, iframeUrl: stageFlowToolsDemoUrl } = useStageFlowTools()
+const { apiUrl: stageFlowToolsApiUrl, iframeUrl: stageFlowToolsDemoUrl } = useStageFlowTools()
 
 const isMaximized = ref(false)
 
@@ -18,8 +18,8 @@ function toggleSize() {
 const iframeSrc = `${stageFlowToolsDemoUrl.value}/results?core&visibility=show-all&padding=50&scale=0.75`
 
 onSlideEnter(() => {
-  if (props.questionKey) {
-    fetch(`${apiUrl}/api/questions/publish`, {
+  if (stageFlowToolsApiUrl && props.questionKey) {
+    fetch(`${stageFlowToolsApiUrl}/api/questions/publish`, {
       body: JSON.stringify({ key: props.questionKey }),
       headers: {
         'Content-Type': 'application/json',
@@ -30,9 +30,11 @@ onSlideEnter(() => {
 })
 
 onSlideLeave(() => {
-  fetch(`${apiUrl}/api/questions/unpublish-active`, {
-    method: 'POST',
-  })
+  if (stageFlowToolsApiUrl) {
+    fetch(`${stageFlowToolsApiUrl}/api/questions/unpublish-active`, {
+      method: 'POST',
+    })
+  }
 })
 </script>
 
@@ -57,11 +59,21 @@ onSlideLeave(() => {
       </div>
       <div class="iframe-wrapper">
         <iframe
+          v-if="stageFlowToolsDemoUrl"
           class="preview-iframe"
           :class="{ 'scaled-down': !isMaximized }"
           frameborder="0"
           :src="iframeSrc"
         />
+        <div
+          v-else
+          :class="{
+            'text-xs m-2': !isMaximized,
+            'm-3': isMaximized,
+          }"
+        >
+          Environment variable `VITE_STAGE_FLOW_TOOLS_DEMO_URL` is not set. Please set it to use this feature.
+        </div>
       </div>
     </div>
   </div>
